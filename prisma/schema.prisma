@@ -19,3 +19,9 @@ model Disciplina {
   matriculaDisciplina String @unique
   nomeDisciplina String @unique
 }
+
+model Sala {
+  idSala        Int     @id @default(autoincrement())
+  nomeSala      String  @unique 
+  tipoSala      String                 
+}

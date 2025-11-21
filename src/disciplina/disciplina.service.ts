@@ -18,7 +18,9 @@ export class DisciplinaService {
         return allDisciplinas;
     }
 
-    async update(id: number, data: Partial<CreateDisciplinaDto>) {
+async update(id: number, data: any) {
+        const { id: idDescartavel, ...dadosLimpos } = data;
+
         const disciplinaExists = await this.prisma.disciplina.findUnique({
             where: { idDisciplina: id } 
         });
@@ -29,7 +31,7 @@ export class DisciplinaService {
 
         const updatedDisciplina = await this.prisma.disciplina.update({
             where: { idDisciplina: id },
-            data,
+            data: dadosLimpos,
         });
         return updatedDisciplina;
     }

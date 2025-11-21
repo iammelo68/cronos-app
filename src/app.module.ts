@@ -6,9 +6,10 @@ import { ProfessorController } from './professor/professor.controller';
 import { ProfessorModule } from './professor/professor.module';
 import { DisciplinaModule } from './disciplina/disciplina.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { SalaModule } from './sala/sala.module';
 
 @Module({
-  imports: [ProfessorModule, DisciplinaModule, PrismaModule],
+  imports: [ProfessorModule, DisciplinaModule, PrismaModule, SalaModule],
   controllers: [AppController],
   providers: [AppService],
 })

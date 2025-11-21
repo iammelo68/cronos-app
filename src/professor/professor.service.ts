@@ -16,7 +16,7 @@ export class ProfessorService {
         return allProfessors;
     }
     async update(id: number, data: Partial<ProfessorCreateDto>) {
-        const professorExists = this.prisma.professor.findUnique({where: {id}});
+        const professorExists = await this.prisma.professor.findUnique({where: {id}});
         if (!professorExists) {
             throw new Error("Professor not found");
         }   
@@ -27,5 +27,15 @@ export class ProfessorService {
         });
         return updatedProfessor;
     }
+    async delete(id: number) {
+        const professorExists = await this.prisma.professor.findUnique({where: {id}});
 
+        if (!professorExists) {
+            throw new Error("Professor not found");
+        }
+
+        return await this.prisma.professor.delete({
+            where: { id }
+        });
+    }
 }

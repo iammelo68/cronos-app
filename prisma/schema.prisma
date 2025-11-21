@@ -13,3 +13,9 @@ model professor {
   emailProf String @unique
   matriculaProf String @unique
 }
+
+model Disciplina {
+  idDisciplina Int @id @default(autoincrement())
+  matriculaDisciplina String @unique
+  nomeDisciplina String @unique
+}

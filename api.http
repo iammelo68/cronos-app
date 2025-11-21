@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:3000
+
+# MÓDULO: DISCIPLINA
+
+### Criar Disciplina
+POST {{baseUrl}}/disciplina/create
+Content-Type: application/json
+
+{
+  "nomeDisciplina": "Engenharia de Software",
+  "matriculaDisciplina": "ESOFT-001"
+}
+
+### Listar Disciplinas
+GET {{baseUrl}}/disciplina/all
+
+# MÓDULO: PROFESSOR
+
+### Criar Professor
+POST {{baseUrl}}/professor/create
+Content-Type: application/json
+
+{
+  "nomeProf": "Gustavo Guanabara",
+  "emailProf": "guanabara@cursoemvideo.com",
+  "matriculaProf": "PROF-2025-01"
+}
+
+### Listar Professores
+GET {{baseUrl}}/professor/all
+
+### Atualizar Professor (ID vai no corpo do JSON)
+PUT {{baseUrl}}/professor/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nomeProf": "Gustavo Guanabara (Editado)"
+}
+
+### Deletar Professor (ID vai no corpo do JSON)
+DELETE {{baseUrl}}/professor/delete
+Content-Type: application/json
+
+{
+  "id": 1
+}

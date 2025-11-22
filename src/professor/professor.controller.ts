@@ -21,11 +21,11 @@ export class ProfessorController {
     async updateProfessor(@Body('id') id: number, @Body() data: Partial<ProfessorCreateDto>) {
         const updatedProfessor = await this.professorService.update(id, data);
         return updatedProfessor;
-}
+    }
 
     @Delete("delete")
     async deleteProfessor(@Body('id') id: number) {
-        const result = await this.professorService.delect(id);
+        const result = await this.professorService.delete(id);
         return result;
     }
-        }
+}

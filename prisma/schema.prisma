@@ -13,3 +13,21 @@ model professor {
   emailProf String @unique
   matriculaProf String @unique
 }
+
+model Disciplina {
+  idDisciplina Int @id @default(autoincrement())
+  matriculaDisciplina String @unique
+  nomeDisciplina String @unique
+}
+
+model Sala {
+  idSala        Int     @id @default(autoincrement())
+  nomeSala      String  @unique 
+  tipoSala      String                 
+}
+
+model Curso {
+  idCurso    Int     @id @default(autoincrement())
+  nomeCurso  String  
+  siglaCurso String? // OPCIONAL->Ex:BES, EF, MAT
+}

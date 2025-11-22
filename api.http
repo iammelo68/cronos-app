@@ -1,0 +1,109 @@
+@baseUrl = http://localhost:3000
+
+#São apenas meus testes com o REST CLIENT
+# MÓDULO: DISCIPLINA
+
+### Criar Disciplina
+POST {{baseUrl}}/disciplina/create
+Content-Type: application/json
+
+{
+  "nomeDisciplina": "Programação Orientada a Objetos",
+  "matriculaDisciplina": "BES-002"
+}
+
+### Listar Disciplinas
+GET {{baseUrl}}/disciplina/all
+
+### Atualizar Disciplina
+PUT http://localhost:3000/disciplina/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nomeDisciplina": "Engenharia de Software II (Atualizada)"
+}
+
+### Deletar Disciplina
+DELETE http://localhost:3000/disciplina/delete
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+# MÓDULO: PROFESSOR
+
+### Criar Professor
+POST {{baseUrl}}/professor/create
+Content-Type: application/json
+
+{
+  "nomeProf": "Gutierrez",
+  "emailProf": "Guti@prof.uepa.com",
+  "matriculaProf": "PROF-02"
+}
+
+### Listar Professores
+GET {{baseUrl}}/professor/all
+
+### Atualizar Professor (ID vai no corpo do JSON)
+PUT {{baseUrl}}/professor/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nomeProf": "Tiago Nicolau"
+}
+
+### Deletar Professor (ID vai no corpo do JSON)
+DELETE {{baseUrl}}/professor/delete
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+# MÓDULO: SALA 
+
+### 1. Criar uma Sala (CREATE)
+POST http://localhost:3000/sala/create
+Content-Type: application/json
+
+{
+  "nomeSala": "Laboratório de Informática 01",
+  "tipoSala": "Laboratório"
+}
+
+### 2. Listar todas as Salas (READ)
+GET http://localhost:3000/sala/all
+
+### 3. Atualizar uma Sala (UPDATE)
+PUT http://localhost:3000/sala/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nomeSala": "Laboratório de Informática 01",
+  "tipoSala": "Laboratório - Indisponível"
+}
+
+### 4. Deletar uma Sala (DELETE)
+DELETE http://localhost:3000/sala/delete
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+### Criar Curso
+POST http://localhost:3000/curso/create
+Content-Type: application/json
+
+{
+  "nomeCurso": "Engenharia de Software",
+  "siglaCurso": "BES"
+}
+
+### Listar Cursos
+GET http://localhost:3000/curso/all

@@ -101,9 +101,76 @@ POST http://localhost:3000/curso/create
 Content-Type: application/json
 
 {
-  "nomeCurso": "Engenharia de Software",
-  "siglaCurso": "BES"
+  "nomeCurso": "Biomedicina",
+  "siglaCurso": "BIOMED"
 }
 
 ### Listar Cursos
 GET http://localhost:3000/curso/all
+
+### 3. Atualizar Curso (UPDATE)
+PUT http://localhost:3000/curso/update
+Content-Type: application/json
+
+{
+  "id": 1, 
+  "nomeCurso": "Engenharia de Software (Grade Nova)",
+  "siglaCurso": "BES-NOVO"
+}
+
+### 4. Deletar Curso (DELETE)
+DELETE http://localhost:3000/curso/delete
+Content-Type: application/json
+
+{
+  "id": 4
+}
+
+# MÓDULO: ADMINISTRADOR (CRUD COMPLETO)
+
+### 1. Criar Admin (CREATE)
+POST http://localhost:3000/administrador/create
+Content-Type: application/json
+
+{
+  "nomeAdm": "Admin 2",
+  "emailAdm": "admin2@uepa.br",
+  "senhaAdm": "admin123"
+}
+
+### 2. Listar Admins (READ)
+GET http://localhost:3000/administrador/all
+
+### 3. Atualizar Admin (UPDATE)
+PUT http://localhost:3000/administrador/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nomeAdm": "Admin Principal (Editado)",
+  "senhaAdm": "novaSenha123"
+}
+
+### 4. Deletar Admin (DELETE)
+DELETE http://localhost:3000/administrador/delete
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+# MÓDULO: PERÍODO
+
+### Criar Periodo
+POST http://localhost:3000/periodo/create
+Content-Type: application/json
+
+{
+  "semestre": "2025.1",
+  "dataInicio": "2025-08-09T00:00:00.000Z",
+  "dataFim": "2025-10-08T00:00:00.000Z",
+  "descricao": "Primeiro Bimestre"
+}
+
+### Listar Periodos
+GET http://localhost:3000/periodo/all

@@ -39,3 +39,11 @@ model Administrador {
   emailAdm  String @unique
   senhaAdm  String 
 }
+
+model Periodo {
+  idPeriodo   Int      @id @default(autoincrement())
+  semestre    String   
+  descricao   String   
+  dataInicio  DateTime 
+  dataFim     DateTime 
+}

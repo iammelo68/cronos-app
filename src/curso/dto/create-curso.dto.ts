@@ -10,4 +10,8 @@ export class CreateCursoDto {
     @IsString()
     @IsOptional()
     siglaCurso?: string;
+
+    @IsString()
+    @IsNotEmpty() 
+    corCurso: string;
 }

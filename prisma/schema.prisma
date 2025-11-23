@@ -12,22 +12,74 @@ model professor {
   nomeProf String
   emailProf String @unique
   matriculaProf String @unique
+
+  alocacoes Alocacao[]
 }
 
 model Disciplina {
   idDisciplina Int @id @default(autoincrement())
   matriculaDisciplina String @unique
   nomeDisciplina String @unique
+
+  alocacoes Alocacao[]
 }
 
 model Sala {
   idSala        Int     @id @default(autoincrement())
   nomeSala      String  @unique 
   tipoSala      String                 
+
+  alocacoes Alocacao[]
 }
 
 model Curso {
   idCurso    Int     @id @default(autoincrement())
   nomeCurso  String  
   siglaCurso String? // OPCIONAL->Ex:BES, EF, MAT
+  corCurso   String
+
+  alocacoes Alocacao[]
+}
+
+model Administrador {
+  idAdm     Int    @id @default(autoincrement())
+  nomeAdm   String
+  emailAdm  String @unique
+  senhaAdm  String 
+}
+
+model Periodo {
+  idPeriodo   Int      @id @default(autoincrement())
+  semestre    String   
+  descricao   String   
+  dataInicio  DateTime 
+  dataFim     DateTime 
+
+  alocacoes Alocacao[]
+}
+
+model Alocacao {
+  idAlocacao    Int      @id @default(autoincrement())
+  
+  // Dados do Horário
+  diaSemana     String  
+  horarioInicio String  
+  horarioFim    String  
+  dataInicio    DateTime @default(now()) 
+  dataFim       DateTime @default(now())
+  // Foreign Keys
+  professorId   Int
+  professor     professor @relation(fields: [professorId], references: [id])  
+
+  disciplinaId  Int
+  disciplina    Disciplina @relation(fields: [disciplinaId], references: [idDisciplina])
+
+  salaId        Int
+  sala          Sala       @relation(fields: [salaId], references: [idSala])
+
+  cursoId       Int
+  curso         Curso      @relation(fields: [cursoId], references: [idCurso])
+
+  periodoId     Int
+  periodo       Periodo    @relation(fields: [periodoId], references: [idPeriodo])
 }

@@ -29,13 +29,14 @@ model Sala {
   nomeSala      String  @unique 
   tipoSala      String                 
 
-  alocacoes Alocacao[]
+  alocacoes    Alocacao[]
+  solicitacoes Solicitacao[]
 }
 
 model Curso {
   idCurso    Int     @id @default(autoincrement())
   nomeCurso  String  
-  siglaCurso String? // OPCIONAL->Ex:BES, EF, MAT
+  siglaCurso String?
   corCurso   String
 
   alocacoes Alocacao[]
@@ -61,15 +62,14 @@ model Periodo {
 model Alocacao {
   idAlocacao    Int      @id @default(autoincrement())
   
-  // Dados do Horário
   diaSemana     String  
   horarioInicio String  
   horarioFim    String  
   dataInicio    DateTime @default(now()) 
   dataFim       DateTime @default(now())
-  // Foreign Keys
+
   professorId   Int
-  professor     professor @relation(fields: [professorId], references: [id])  
+  professor     professor  @relation(fields: [professorId], references: [id])  
 
   disciplinaId  Int
   disciplina    Disciplina @relation(fields: [disciplinaId], references: [idDisciplina])
@@ -82,4 +82,57 @@ model Alocacao {
 
   periodoId     Int
   periodo       Periodo    @relation(fields: [periodoId], references: [idPeriodo])
+}
+
+model Solicitacao {
+  idSolicitacao Int      @id @default(autoincrement())
+
+  // Dados do solicitante
+  solicitante   String
+  email         String
+  matricula     String
+  papel         String   // 'aluno' | 'professor'
+
+  // Dados do evento
+  motivo        String
+  descricao     String
+  observacoes   String?
+  participantes Int?
+
+  // Dados do agendamento
+  diaSemana     String
+  dataEvento    String?
+  horarioInicio String
+  horarioFim    String
+
+  // Status e metadados
+  status        String   @default("pendente") // 'pendente' | 'aprovado' | 'recusado'
+  motivoRecusa  String?
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  // Relação com sala
+  salaId        Int
+  sala          Sala     @relation(fields: [salaId], references: [idSala])
+}
+
+model Usuario {
+  idUsuario    Int      @id @default(autoincrement())
+  nome         String
+  email        String   @unique
+  username     String   @unique
+  senhaHash    String
+  papel        String   // aluno | professor | admin
+  status       String   @default("pendente") // pendente | aprovado | recusado
+
+  // aluno
+  matricula    String?
+  curso        String?
+
+  // professor
+  siape        String?
+  departamento String?
+
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
 }
